@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head_content %}{% endblock %}
+
+
+    {% load static %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+
+</head>
+<body>
+
+    <div class="container mt-5">
+    <h1>Boxes</h1>
+    {% for boxes in box_inf%}
+        <ul>
+            <li>Box Name: {{ boxes.name }} </li>
+            <li>Box Internal name: {{ boxes.internal_name }} </li>
+            <li>Box Descripcion: {{ boxes.description }} </li>
+            <li>Box Actividades: 
+                {%for actividades in actividad %}
+                <ul><li>{{actividades.name}}</li></ul>
+                {% endfor%}
+            </li>
+            <li>Box Categoria: {{ boxes.category }} </li>
+            <li>Box Precio: {{ boxes.price }} </li>
+            <li>Box Slug: {{ boxes.slug }} </li>
+        </ul>
+        <a href="{%url "activity" boxes.id %}">activity</a>
+    {% endfor%}
+    </div>
+
+
+</body>
+</html>

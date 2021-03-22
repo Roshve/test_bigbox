@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head_content %}{% endblock %}
+
+
+    {% load static %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+
+</head>
+<body>
+
+    <div class="container mt-5">
+    <table border="1">
+        <caption>{{ list_box_inf.name }} Actividades</caption>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Actividades</th>
+            </tr>
+            {% for actividades in page_obj %}
+            <tr>  
+                <th><a href={{ actividades.id }}>{{ actividades.id }}</a></th>
+                <td>{{ actividades.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+</body>
+</html>

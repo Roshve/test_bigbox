@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head_content %}{% endblock %}
+
+
+    {% load static %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>{{list_actividad_info.internal_name }}</h1>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Actividades</th>
+                    <th>Descripcion</th>
+                    <th>Categoria</th>
+                    <th>Disponible venta individual</th>
+                </tr>
+                <tr>  
+                    <td>{{ list_actividad_info.id }}</td>
+                    <td>{{ list_actividad_info.name }}</td>
+                    <td>{{ list_actividad_info.description }}</td>
+                    <td>{{ list_actividad_info.category_id }}</td>
+                    <td>{{ list_actividad_info.purchase_available }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
