@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.config import settings
+from django.config.urls.static import static
 
 from bigbox.views import box, box_id, redireccion, activity, activity_id, box_slug
 
@@ -26,4 +28,4 @@ urlpatterns = [
     path('box/<slug>/', box_slug, name='box_slug'),
     path('box/<int:id>/activity/', activity, name='activity'),
     path('box/<int:id>/activity/<int:activity_id>/', activity_id, name='actividad'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
